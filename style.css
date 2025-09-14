@@ -1,0 +1,475 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ffeef8 0%, #f8d7da 25%, #fff0f5 50%, #fce4ec 75%, #f8bbd9 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Звездочки на фоне */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.stars::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+        radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: sparkle 3s linear infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Заголовок */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 40px 0;
+}
+
+.main-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #d63384;
+    text-shadow: 3px 3px 6px rgba(214, 51, 132, 0.3);
+    margin-bottom: 20px;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { text-shadow: 3px 3px 6px rgba(214, 51, 132, 0.3); }
+    100% { text-shadow: 3px 3px 15px rgba(214, 51, 132, 0.6), 0 0 30px rgba(255, 182, 193, 0.4); }
+}
+
+.heart-animation {
+    font-size: 3rem;
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Поздравительная секция */
+.greeting-section {
+    margin-bottom: 80px;
+}
+
+.greeting-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 215, 218, 0.8));
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(214, 51, 132, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: cardFloat 3s ease-in-out infinite;
+}
+
+@keyframes cardFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.greeting-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #6d4c7d;
+    text-align: center;
+    font-weight: 300;
+}
+
+/* Секции заголовков */
+.section-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #d63384;
+    text-align: center;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(214, 51, 132, 0.2);
+}
+
+/* Фотографии */
+.photos-section {
+    margin-bottom: 80px;
+}
+
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.photo-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(214, 51, 132, 0.15);
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(214, 51, 132, 0.25);
+}
+
+.photo {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    filter: saturate(1.1) brightness(1.05);
+    transition: filter 0.3s ease;
+}
+
+.photo:hover {
+    filter: saturate(1.3) brightness(1.1);
+}
+
+/* Семейная секция */
+.family-section {
+    margin-bottom: 80px;
+}
+
+.family-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.family-member {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 25px;
+    padding: 30px;
+    box-shadow: 0 15px 30px rgba(214, 51, 132, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    animation: memberFade 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.family-member:nth-child(1) { animation-delay: 0.2s; }
+.family-member:nth-child(2) { animation-delay: 0.4s; }
+.family-member:nth-child(3) { animation-delay: 0.6s; }
+.family-member:nth-child(4) { animation-delay: 0.8s; }
+
+@keyframes memberFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.member-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.member-content.reverse {
+    grid-template-columns: 1fr 2fr;
+}
+
+.member-text h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    color: #d63384;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.member-text p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #6d4c7d;
+    font-weight: 300;
+}
+
+.member-photo {
+    position: relative;
+}
+
+.member-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ffb6c1;
+    box-shadow: 0 10px 20px rgba(214, 51, 132, 0.2);
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    display: block;
+}
+
+.member-photo:hover img {
+    transform: scale(1.1);
+    border-color: #d63384;
+    box-shadow: 0 15px 30px rgba(214, 51, 132, 0.3);
+}
+
+/* Секция Египта */
+.egypt-section {
+    margin-bottom: 80px;
+}
+
+.egypt-card {
+    background: linear-gradient(135deg, #fff4e6 0%, #ffe0b3 100%);
+    padding: 40px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(255, 165, 0, 0.1);
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.egypt-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.egypt-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+.egypt-text {
+    font-size: 1.3rem;
+    color: #d4841c;
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.egypt-decoration {
+    font-size: 2rem;
+    animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+/* Финальная секция */
+.final-section {
+    margin-bottom: 60px;
+}
+
+.gift-box {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 240, 245, 0.9));
+    padding: 50px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(214, 51, 132, 0.15);
+    border: 2px dashed #ffb6c1;
+    position: relative;
+    overflow: hidden;
+}
+
+.gift-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.gift-icon {
+    font-size: 5rem;
+    margin-bottom: 30px;
+    animation: giftShake 2s ease-in-out infinite;
+}
+
+@keyframes giftShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+.final-text {
+    font-size: 1.3rem;
+    color: #6d4c7d;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.sparkles {
+    font-size: 2rem;
+    animation: sparkleRotate 2s linear infinite;
+}
+
+@keyframes sparkleRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Плавающие сердечки */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-hearts span {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 6s infinite linear;
+    opacity: 0.7;
+}
+
+.floating-hearts span:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 6s;
+}
+
+.floating-hearts span:nth-child(2) {
+    left: 20%;
+    animation-delay: 1s;
+    animation-duration: 8s;
+}
+
+.floating-hearts span:nth-child(3) {
+    left: 70%;
+    animation-delay: 2s;
+    animation-duration: 7s;
+}
+
+.floating-hearts span:nth-child(4) {
+    left: 80%;
+    animation-delay: 3s;
+    animation-duration: 9s;
+}
+
+.floating-hearts span:nth-child(5) {
+    left: 90%;
+    animation-delay: 4s;
+    animation-duration: 5s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .member-content,
+    .member-content.reverse {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .greeting-card,
+    .egypt-card,
+    .gift-box {
+        padding: 25px;
+    }
+    
+    .photos-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .member-photo img {
+        width: 120px;
+        height: 120px;
+    }
+}
